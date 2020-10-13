@@ -7,7 +7,9 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://localhost:7901/eureka
-#      ,http://localhost:7902/eureka,http://localhost:7903/eureka
+  #      ,http://localhost:7902/eureka,http://localhost:7903/eureka
+    # 拉取时间间隔
+    registry-fetch-interval-seconds: 30
   server:
     # 自我保护
     enable-self-preservation: false
@@ -21,7 +23,9 @@ eureka:
     use-read-only-response-cache: false
     # readwrite 到 readonly 的同步时间
     response-cache-update-interval-ms: 1000
-
+  instance:
+    # 续约时间
+    lease-renewal-interval-in-seconds: 30
 ---
 spring:
   profiles: 7901
