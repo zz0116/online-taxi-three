@@ -3,24 +3,23 @@ spring:
     name: cloud-eureka
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
     service-url:
-      defaultZone: http://localhost:7901/eureka
-  #      ,http://localhost:7902/eureka,http://localhost:7903/eureka
+      defaultZone: http://eureka-7901:7901/eureka/,http://eureka-7902:7902/eureka/,http://eureka-7903:7903/eureka/
     # 拉取时间间隔
-    registry-fetch-interval-seconds: 30
+    # registry-fetch-interval-seconds: 30
   server:
     # 自我保护
-    enable-self-preservation: false
-    # 不同数量服务的自我保护
+    enable-self-preservation: true
+    # 自我保护的续约阈值
     renewal-percent-threshold: 0.85
     # 剔除服务的时间间隔
     eviction-interval-timer-in-ms: 1000
     # 缓存 register readwrite readonly 三级缓存
     # eureka 为什么 cap 只有 ap: 同步不是强一致
     # 关闭从 readonly 读注册表
-    use-read-only-response-cache: false
+    use-read-only-response-cache: true
     # readwrite 到 readonly 的同步时间
     response-cache-update-interval-ms: 1000
   instance:
