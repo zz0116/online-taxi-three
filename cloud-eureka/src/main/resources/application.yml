@@ -3,10 +3,12 @@ spring:
     name: cloud-eureka
 eureka:
   client:
+    # 此应用为注册中心，false：不向注册中心注册自己。
     register-with-eureka: true
+    # 注册中心职责是维护服务实例，false：不检索服务。
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka-7901:7901/eureka/,http://eureka-7902:7902/eureka/,http://eureka-7903:7903/eureka/
+      defaultZone: http://eureka-8701:8701/eureka/,http://eureka-8702:8702/eureka/,http://eureka-8703:8703/eureka/
     # 拉取时间间隔
     # registry-fetch-interval-seconds: 30
   server:
@@ -15,7 +17,7 @@ eureka:
     # 自我保护的续约阈值
     renewal-percent-threshold: 0.85
     # 剔除服务的时间间隔
-    eviction-interval-timer-in-ms: 1000
+#    eviction-interval-timer-in-ms: 1000
     # 缓存 register readwrite readonly 三级缓存
     # eureka 为什么 cap 只有 ap: 同步不是强一致
     # 关闭从 readonly 读注册表
@@ -27,27 +29,27 @@ eureka:
     lease-renewal-interval-in-seconds: 30
 ---
 spring:
-  profiles: 7901
+  profiles: 8701
 server:
-  port: 7901
+  port: 8701
 eureka:
   instance:
-    hostname: eureka-7901
+    hostname: eureka-8701
 
 ---
 spring:
-  profiles: 7902
+  profiles: 8702
 server:
-  port: 7902
+  port: 8702
 eureka:
   instance:
-    hostname: eureka-7902
+    hostname: eureka-8702
 
 ---
 spring:
-  profiles: 7903
+  profiles: 8703
 server:
-  port: 7903
+  port: 8703
 eureka:
   instance:
-    hostname: eureka-7903
+    hostname: eureka-8703
